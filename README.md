@@ -17,6 +17,10 @@ lippytm.ai is a creative development hub that connects various code platforms (G
 ## Quick Start
 
 ```bash
+# Clone the repository
+git clone https://github.com/lippytm/lippytm.ai.git
+cd lippytm.ai
+
 # Install dependencies
 npm install
 
@@ -26,6 +30,8 @@ npm start
 # Development mode with auto-reload
 npm run dev
 ```
+
+📖 See the [Quick Start Guide](docs/QUICKSTART.md) for detailed instructions.
 
 ## Project Structure
 
@@ -41,7 +47,10 @@ lippytm.ai/
 
 ## Documentation
 
+- [Quick Start Guide](docs/QUICKSTART.md) - Get started in 5 minutes
 - [Development Guide](docs/DEVELOPMENT.md) - Learn about our creative development process
+- [Architecture](docs/ARCHITECTURE.md) - Understand the system design
+- [Roadmap](docs/ROADMAP.md) - See what's planned for the future
 - [Contributing](CONTRIBUTING.md) - How to contribute to the project
 - [Examples](examples/) - Usage examples and tutorials
 
