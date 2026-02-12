@@ -27,7 +27,7 @@ Thank you for your interest in contributing to lippytm.ai! We welcome contributi
 
 ## Development Setup
 
-See [DEVELOPMENT.md](DEVELOPMENT.md) for detailed setup instructions.
+See [DEVELOPMENT.md](docs/DEVELOPMENT.md) for detailed setup instructions.
 
 ## Code of Conduct
 

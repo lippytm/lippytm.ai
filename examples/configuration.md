@@ -7,26 +7,14 @@ import { GitHubConnector } from '../src/connectors/github.js';
 import { GitLabConnector } from '../src/connectors/gitlab.js';
 import { GistConnector } from '../src/connectors/gist.js';
 
-// Configuration object
-const config = {
-  github: {
-    token: process.env.GITHUB_TOKEN,
-    apiUrl: 'https://api.github.com'
-  },
-  gitlab: {
-    token: process.env.GITLAB_TOKEN,
-    apiUrl: 'https://gitlab.com/api/v4'
-  },
-  gist: {
-    token: process.env.GITHUB_TOKEN // Gist uses GitHub token
-  }
-};
+// Note: Current implementation uses environment variables for configuration
+// Future versions will support passing configuration objects to constructors
 
-async function setupWithConfig() {
-  // Create connectors with configuration
-  const github = new GitHubConnector(config.github);
-  const gitlab = new GitLabConnector(config.gitlab);
-  const gist = new GistConnector(config.gist);
+async function setupConnectors() {
+  // Create connectors (configuration will be added in future versions)
+  const github = new GitHubConnector();
+  const gitlab = new GitLabConnector();
+  const gist = new GistConnector();
   
   // Connect to all platforms
   await Promise.all([
@@ -38,7 +26,7 @@ async function setupWithConfig() {
   console.log('All platforms connected!');
 }
 
-setupWithConfig().catch(console.error);
+setupConnectors().catch(console.error);
 ```
 
 ## Environment Variables
@@ -51,3 +39,14 @@ GITLAB_TOKEN=your_gitlab_token_here
 ```
 
 **Note:** Never commit your `.env` file to version control!
+
+## Future Configuration
+
+In future versions, you'll be able to pass configuration directly:
+
+```javascript
+const github = new GitHubConnector({
+  token: process.env.GITHUB_TOKEN,
+  apiUrl: 'https://api.github.com'
+});
+```
