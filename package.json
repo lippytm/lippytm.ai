@@ -1,0 +1,26 @@
+{
+  "name": "lippytm.ai",
+  "version": "0.1.0",
+  "description": "A AI Web3AI connection Hub with Gist, Git, GitLab, GitHub and all of my repositories",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js",
+    "test": "echo \"No tests yet\" && exit 0",
+    "lint": "echo \"No linter configured yet\" && exit 0"
+  },
+  "keywords": [
+    "ai",
+    "web3",
+    "github",
+    "gitlab",
+    "gist",
+    "repository-hub"
+  ],
+  "author": "lippytm",
+  "license": "SEE LICENSE IN LICENSE",
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

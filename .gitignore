@@ -1,11 +1,44 @@
-# Built things
+# Dependencies
+node_modules/
+package-lock.json
+yarn.lock
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Build output
+dist/
+build/
 _Debug/
 Compiled/
 
-# AudioCache can be rebuilt from sources
+# Cache
+.cache/
 AudioCache/
+.eslintcache
 
-# Lockfile
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+warnings.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Lockfiles
 _OpenInEditor.lock
 
 # User settings
@@ -15,17 +48,13 @@ Game.agf.user
 # Backups
 Game.agf.bak
 backup_acsprset.spr
+*.bak
 
 # Memory dumps
 *.dmp
 
 # Temporary files
-# temporarily created during sprite or room background compression
 ~aclzw.tmp
-# temporary, main game data, before getting packed into exe
 game28.dta
-# temporary build of the game before being moved to Compiled/ folder
+*.tmp
 *.exe
-
-# Log files
-warnings.log
