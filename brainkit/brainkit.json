@@ -1,0 +1,35 @@
+{
+  "name": "lippytm-ai-brainkit",
+  "version": "1.0.0",
+  "description": "Standardized AI configuration kit for all lippytm repositories",
+  "author": "lippytm",
+  "hub": "https://github.com/lippytm/lippytm.ai",
+  "license": "GPL-3.0",
+  "features": [
+    "copilot-instructions",
+    "ai-connector-templates",
+    "web3-integration",
+    "repository-automation"
+  ],
+  "repositories": [
+    "lippytm/lippytm.ai",
+    "lippytm/Transparency-Logic-Time-Machine-Bots-",
+    "lippytm/Web3AI",
+    "lippytm/AllBots.com",
+    "lippytm/AI-Full-Stack-AI-DevOps-Synthetic-Intelligence-Engines-AgentsBots-Web3-Websites-",
+    "lippytm/gatsby-starter-blog",
+    "lippytm/Chatlippytm.ai.Bots",
+    "lippytm/lippytm-lippytm.ai-tower-control-ai",
+    "lippytm/The-Encyclopedia-of-Everything-Applied-ChatAIBots",
+    "lippytm/Time-Machines-Builders-",
+    "lippytm/AI-Time-Machines",
+    "lippytm/AllBots.com.ai",
+    "lippytm/Factory.ai",
+    "lippytm/OpenClaw-lippytm.AI-"
+  ],
+  "templates": {
+    "copilot-instructions": "copilot-instructions.template.md",
+    "connector": "connector.template.js"
+  },
+  "updatedAt": "2026-03-03"
+}
