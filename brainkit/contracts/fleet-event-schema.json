@@ -1,0 +1,118 @@
+{
+  "title": "FleetEvent",
+  "description": "Standard event contract for cross-repo, cross-agent, and cross-platform fleet activity.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "event_id",
+    "event_type",
+    "event_version",
+    "timestamp",
+    "source",
+    "payload"
+  ],
+  "properties": {
+    "event_id": {
+      "type": "string",
+      "description": "Unique event identifier."
+    },
+    "event_type": {
+      "type": "string",
+      "enum": [
+        "lead.created",
+        "lead.qualified",
+        "lead.routed",
+        "task.created",
+        "task.assigned",
+        "task.started",
+        "task.completed",
+        "task.failed",
+        "agent.created",
+        "agent.updated",
+        "agent.failed",
+        "agent.heartbeat",
+        "swarm.broadcast",
+        "deployment.started",
+        "deployment.completed",
+        "deployment.failed",
+        "quality.check.started",
+        "quality.check.completed",
+        "quality.check.failed",
+        "repo.scanned",
+        "security.alert",
+        "billing.event",
+        "content.generated",
+        "experiment.recorded"
+      ]
+    },
+    "event_version": {
+      "type": "string",
+      "description": "Semantic version of the event contract."
+    },
+    "timestamp": {
+      "type": "string",
+      "description": "UTC timestamp of the event."
+    },
+    "trace_id": {
+      "type": "string"
+    },
+    "correlation_id": {
+      "type": "string"
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["repo", "component", "lane"],
+      "properties": {
+        "repo": { "type": "string" },
+        "component": { "type": "string" },
+        "lane": {
+          "type": "string",
+          "enum": ["hub", "control", "swarm", "revenue", "product", "commerce", "knowledge", "lab"]
+        },
+        "environment": {
+          "type": "string",
+          "enum": ["local", "dev", "staging", "prod", "sandbox"]
+        },
+        "agent_role": { "type": "string" }
+      }
+    },
+    "target": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "repo": { "type": "string" },
+        "component": { "type": "string" },
+        "agent_role": { "type": "string" },
+        "channel": { "type": "string" }
+      }
+    },
+    "priority": {
+      "type": "string",
+      "enum": ["low", "normal", "high", "critical"]
+    },
+    "payload": {
+      "type": "object"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["queued", "running", "completed", "failed", "partial", "skipped"]
+    },
+    "metrics": {
+      "type": "object"
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "approval": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "required": { "type": "boolean" },
+        "approved": { "type": "boolean" },
+        "approver": { "type": "string" }
+      }
+    }
+  }
+}
