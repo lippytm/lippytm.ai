@@ -1,0 +1,103 @@
+{
+  "title": "AgentTask",
+  "description": "Standard task contract for fleet agents, workflows, and supervised automation.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "task_id",
+    "agent_role",
+    "repo",
+    "objective",
+    "inputs",
+    "constraints",
+    "priority"
+  ],
+  "properties": {
+    "task_id": {
+      "type": "string"
+    },
+    "agent_role": {
+      "type": "string",
+      "enum": [
+        "architect",
+        "builder",
+        "tester",
+        "ops",
+        "growth",
+        "security",
+        "knowledge",
+        "monetization",
+        "research",
+        "supervisor"
+      ]
+    },
+    "repo": {
+      "type": "string"
+    },
+    "objective": {
+      "type": "string"
+    },
+    "summary": {
+      "type": "string"
+    },
+    "inputs": {
+      "type": "object"
+    },
+    "constraints": {
+      "type": "object",
+      "properties": {
+        "write_allowed": { "type": "boolean" },
+        "network_allowed": { "type": "boolean" },
+        "max_cost_usd": { "type": "number" },
+        "requires_review": { "type": "boolean" },
+        "protected_paths": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "blocked_actions": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "priority": {
+      "type": "string",
+      "enum": ["low", "normal", "high", "critical"]
+    },
+    "status": {
+      "type": "string",
+      "enum": ["queued", "assigned", "running", "blocked", "review", "completed", "failed"]
+    },
+    "approval_required": {
+      "type": "boolean"
+    },
+    "approval_state": {
+      "type": "string",
+      "enum": ["not_required", "pending", "approved", "rejected"]
+    },
+    "dependencies": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "deliverables": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "success_criteria": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "telemetry": {
+      "type": "object"
+    },
+    "assigned_by": {
+      "type": "string"
+    },
+    "created_at": {
+      "type": "string"
+    },
+    "updated_at": {
+      "type": "string"
+    }
+  }
+}
