@@ -1,0 +1,36 @@
+{
+  "title": "CrmEvent",
+  "type": "object",
+  "required": [
+    "event_id",
+    "event_type",
+    "contact_id",
+    "lead_stage",
+    "timestamp"
+  ],
+  "properties": {
+    "event_id": { "type": "string" },
+    "event_type": {
+      "type": "string",
+      "enum": [
+        "lead.created",
+        "lead.engaged",
+        "lead.qualified",
+        "lead.strategy_routed",
+        "lead.premium_routed",
+        "followup.scheduled",
+        "service.activated",
+        "lead.reengaged",
+        "lead.archived"
+      ]
+    },
+    "contact_id": { "type": "string" },
+    "lead_stage": { "type": "string" },
+    "primary_goal": { "type": ["string", "null"] },
+    "urgency": { "type": ["string", "null"] },
+    "next_action": { "type": ["string", "null"] },
+    "service_state": { "type": ["string", "null"] },
+    "related_offer": { "type": ["string", "null"] },
+    "timestamp": { "type": "string" }
+  }
+}
