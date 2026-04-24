@@ -1,0 +1,36 @@
+{
+  "title": "SystemState",
+  "type": "object",
+  "required": [
+    "system_id",
+    "lane",
+    "state",
+    "promotion_stage",
+    "risk_level",
+    "updated_at"
+  ],
+  "properties": {
+    "system_id": { "type": "string" },
+    "lane": {
+      "type": "string",
+      "enum": ["hub", "control", "swarm", "revenue", "product", "commerce", "knowledge", "lab"]
+    },
+    "state": {
+      "type": "string",
+      "enum": ["idle", "observing", "planning", "routing", "review", "executing", "measuring", "recovering"]
+    },
+    "promotion_stage": { "type": "integer", "minimum": 0, "maximum": 5 },
+    "risk_level": {
+      "type": "string",
+      "enum": ["low", "moderate", "high", "critical"]
+    },
+    "write_mode": {
+      "type": "string",
+      "enum": ["read_only", "proposal_only", "limited_autonomous_write", "governed_autonomous_write", "blocked"]
+    },
+    "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+    "current_mission_id": { "type": ["string", "null"] },
+    "last_loop_summary": { "type": ["string", "null"] },
+    "updated_at": { "type": "string" }
+  }
+}
