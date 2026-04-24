@@ -1,0 +1,10 @@
+primary_lane: hub
+secondary_lane: null
+promotion_stage: 5
+value_role: platform
+risk_level: critical
+public_surface: false
+brainkit_managed: true
+fleet_managed: true
+self_improvement_ready: true
+state_awareness_ready: true
