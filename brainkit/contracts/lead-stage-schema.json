@@ -1,0 +1,30 @@
+{
+  "title": "LeadStage",
+  "type": "object",
+  "required": [
+    "stage_name",
+    "stage_order",
+    "active"
+  ],
+  "properties": {
+    "stage_name": {
+      "type": "string",
+      "enum": [
+        "new_lead",
+        "engaged_lead",
+        "qualified_lead",
+        "strategy_lead",
+        "premium_lead",
+        "active_service",
+        "nurture_hold",
+        "reengagement",
+        "archived"
+      ]
+    },
+    "stage_order": { "type": "integer", "minimum": 1 },
+    "active": { "type": "boolean" },
+    "business_priority": { "type": ["string", "null"] },
+    "next_default_action": { "type": ["string", "null"] },
+    "notes": { "type": ["string", "null"] }
+  }
+}
