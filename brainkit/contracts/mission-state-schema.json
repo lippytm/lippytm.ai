@@ -1,0 +1,37 @@
+{
+  "title": "MissionState",
+  "type": "object",
+  "required": [
+    "mission_id",
+    "objective",
+    "state",
+    "lane_targets",
+    "updated_at"
+  ],
+  "properties": {
+    "mission_id": { "type": "string" },
+    "objective": { "type": "string" },
+    "state": {
+      "type": "string",
+      "enum": ["queued", "classifying", "planning", "review", "executing", "measuring", "completed", "rollback", "blocked"]
+    },
+    "lane_targets": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": ["hub", "control", "swarm", "revenue", "product", "commerce", "knowledge", "lab"]
+      }
+    },
+    "risk_level": {
+      "type": "string",
+      "enum": ["low", "moderate", "high", "critical"]
+    },
+    "approval_required": { "type": "boolean" },
+    "current_phase": { "type": ["string", "null"] },
+    "success_criteria": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "updated_at": { "type": "string" }
+  }
+}
