@@ -1,0 +1,23 @@
+{
+  "title": "CustomerExpansionEvent",
+  "type": "object",
+  "required": ["event_id", "event_type", "contact_id", "timestamp"],
+  "properties": {
+    "event_id": { "type": "string" },
+    "event_type": {
+      "type": "string",
+      "enum": [
+        "customer.expansion_candidate",
+        "customer.followup_due",
+        "customer.upgrade_interest",
+        "customer.repeat_engagement",
+        "customer.expansion_closed"
+      ]
+    },
+    "contact_id": { "type": "string" },
+    "service_state": { "type": ["string", "null"] },
+    "related_offer": { "type": ["string", "null"] },
+    "next_action": { "type": ["string", "null"] },
+    "timestamp": { "type": "string" }
+  }
+}
