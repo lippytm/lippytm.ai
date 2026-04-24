@@ -1,0 +1,24 @@
+{
+  "title": "ContactState",
+  "type": "object",
+  "required": [
+    "contact_id",
+    "lead_stage",
+    "primary_goal",
+    "last_touch_at",
+    "next_action"
+  ],
+  "properties": {
+    "contact_id": { "type": "string" },
+    "lead_stage": { "type": "string" },
+    "primary_goal": { "type": "string" },
+    "urgency": { "type": ["string", "null"] },
+    "budget_band": { "type": ["string", "null"] },
+    "preferred_contact_method": { "type": ["string", "null"] },
+    "last_touch_at": { "type": "string" },
+    "next_action": { "type": "string" },
+    "service_state": { "type": ["string", "null"] },
+    "related_offer": { "type": ["string", "null"] },
+    "owner_lane": { "type": ["string", "null"] }
+  }
+}
