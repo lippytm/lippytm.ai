@@ -1,0 +1,25 @@
+{
+  "title": "PartnerEvent",
+  "type": "object",
+  "required": ["event_id", "event_type", "partner_id", "timestamp"],
+  "properties": {
+    "event_id": { "type": "string" },
+    "event_type": {
+      "type": "string",
+      "enum": [
+        "partner.created",
+        "partner.routed",
+        "partner.lead",
+        "partner.active",
+        "partner.followup",
+        "partner.closed"
+      ]
+    },
+    "partner_id": { "type": "string" },
+    "partner_type": { "type": ["string", "null"] },
+    "related_offer": { "type": ["string", "null"] },
+    "contact_id": { "type": ["string", "null"] },
+    "next_action": { "type": ["string", "null"] },
+    "timestamp": { "type": "string" }
+  }
+}
