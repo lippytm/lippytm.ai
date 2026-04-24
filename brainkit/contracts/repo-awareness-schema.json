@@ -1,0 +1,32 @@
+{
+  "title": "RepoAwareness",
+  "type": "object",
+  "required": [
+    "repo",
+    "primary_lane",
+    "promotion_stage",
+    "value_role",
+    "risk_level"
+  ],
+  "properties": {
+    "repo": { "type": "string" },
+    "primary_lane": {
+      "type": "string",
+      "enum": ["hub", "control", "swarm", "revenue", "product", "commerce", "knowledge", "lab"]
+    },
+    "secondary_lane": { "type": ["string", "null"] },
+    "promotion_stage": { "type": "integer", "minimum": 0, "maximum": 5 },
+    "value_role": {
+      "type": "string",
+      "enum": ["direct", "supporting", "platform", "experimental"]
+    },
+    "risk_level": {
+      "type": "string",
+      "enum": ["low", "moderate", "high", "critical"]
+    },
+    "public_surface": { "type": "boolean" },
+    "brainkit_managed": { "type": "boolean" },
+    "fleet_managed": { "type": "boolean" },
+    "notes": { "type": ["string", "null"] }
+  }
+}
