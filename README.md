@@ -12,4 +12,8 @@ The **AI BrainKit** provides a standardized set of AI configuration files, conne
 
 ## Documentation
 
-- [Monetization Strategies](MONETIZATION.md) - Comprehensive guide on ways to make money with the platform
+- [Monetization Strategies](MONETIZATION.md) - Comprehensive guide on ways to make money with the platform, including affiliate and partnership opportunities such as Twin.so
+
+## Business of Businesses Opportunities
+
+- [Twin.so AI Agent Automation Affiliate](https://twin.so?via=charles-lipshay) - AI agent automation opportunity for connecting business workflows, no-code automation, lead systems, and lippytm.ai Business of Businesses services.
