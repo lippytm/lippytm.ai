@@ -106,6 +106,13 @@ This document outlines various monetization strategies for the lippytm.ai platfo
 - Tiered rewards based on user activity
 - Recurring revenue for subscription referrals
 
+### Twin.so AI Agent Automation Affiliate
+- Referral link: https://twin.so?via=charles-lipshay
+- Position Twin.so as an AI agent automation tool inside the lippytm.ai Business of Businesses stack.
+- Use Twin.so alongside BotBuilders, ManyChat, GitHub Copilot, Replit, and lippytm.ai workflows to help businesses automate lead handling, research, repetitive operations, content workflows, and back-office tasks.
+- Package Twin.so as part of an "AI Business Automation Starter Kit" for entrepreneurs, agencies, local businesses, finance leads, creators, and Web3 builders.
+- Create promotional funnels that explain how no-code AI agents can support faster response times, workflow automation, data organization, and business process scaling.
+
 ### Technology Partnerships
 - Integration partnerships with complementary tools
 - Co-marketing opportunities
@@ -177,6 +184,7 @@ This document outlines various monetization strategies for the lippytm.ai platfo
 - Launch marketplace
 - Introduce token economy
 - Begin affiliate program
+- Add Twin.so affiliate promotion into the Business of Businesses opportunity list and AI automation starter kit.
 
 ### Phase 3: Scale (Months 7-12)
 - Enterprise solutions
