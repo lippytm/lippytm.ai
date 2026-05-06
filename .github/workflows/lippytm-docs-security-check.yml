@@ -1,0 +1,66 @@
+name: Docs and Security Hygiene Check
+
+on:
+  push:
+    branches: ["main", "master"]
+  pull_request:
+    branches: ["main", "master"]
+  schedule:
+    - cron: "17 4 * * 1"
+
+permissions:
+  contents: read
+
+jobs:
+  docs-security-hygiene:
+    name: Check documentation and security hygiene
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check for common secret file names
+        shell: bash
+        run: |
+          echo "Checking for common secret-bearing files..."
+          FOUND=0
+          for pattern in ".env" ".env.*" "*.pem" "*.key" "id_rsa" "id_dsa" "*.p12" "*.pfx"; do
+            if find . -type f -name "$pattern" | grep -v ".git"; then
+              FOUND=1
+            fi
+          done
+          if [ "$FOUND" -eq 1 ]; then
+            echo "Potential secret-bearing files found. Review immediately."
+            exit 1
+          fi
+          echo "No common secret-bearing files found."
+
+      - name: Check for required security docs
+        shell: bash
+        run: |
+          echo "Checking for security documentation..."
+          MISSING=0
+          for file in "SECURITY.md" "security/SECURITY_CHECKLIST.md" "security/DATA_CLASSIFICATION.md" "security/INCIDENT_RESPONSE.md"; do
+            if [ ! -f "$file" ]; then
+              echo "Missing: $file"
+              MISSING=1
+            else
+              echo "Found: $file"
+            fi
+          done
+          if [ "$MISSING" -eq 1 ]; then
+            echo "Security documentation is incomplete."
+            exit 1
+          fi
+
+      - name: Check public copy for risky guarantee language
+        shell: bash
+        run: |
+          echo "Checking for risky guarantee language..."
+          if grep -RInE "guaranteed (funding|income|approval|profit|returns|cybersecurity)|guarantee (funding|income|approval|profit|returns|cybersecurity)" . \
+            --exclude-dir=.git \
+            --exclude="*.png" --exclude="*.jpg" --exclude="*.jpeg" --exclude="*.gif" --exclude="*.webp"; then
+            echo "Risky guarantee language found. Review copy and add safe disclaimers."
+            exit 1
+          fi
+          echo "No risky guarantee language found."
