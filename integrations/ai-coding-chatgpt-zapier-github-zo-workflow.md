@@ -135,6 +135,48 @@ Best practice:
 - Use Claude for review and improvement after ChatGPT Business produces a strong draft.
 - Use Zo to turn the improved version into published files/pages.
 
+## Custom skill activation layer
+
+Use the custom LippytmAI skills as operating playbooks whenever a matching task appears:
+
+- `Skills/lippytmai-business-of-businesses/SKILL.md` — activate for platform strategy, revenue architecture, industry selection, ecosystem planning, partnership planning, and Business of Businesses positioning.
+- `Skills/getbizfunds-lead-automation/SKILL.md` — activate for GetBizFunds funnels, lead intake, Zapier templates, CRM/spreadsheet fields, GitHub lead issues, lead stages, priority bands, and follow-up routes.
+- `Skills/chatgpt-github-creative-mirror/SKILL.md` — activate when ChatGPT Business produces new creative work that should be mirrored, improved, organized, committed, or turned into a public asset.
+- `Skills/ai-business-ebook-funnel/SKILL.md` — activate for eBooks, lead magnets, sales copy, digital products, checkout offers, email sequences, Canva cover prompts, and launch campaigns.
+- `Skills/space-aliens-content-engine/SKILL.md` — activate for science-fiction educational entertainment, Space Aliens stories, Time Machine episodes, robotics/programming/blockchain education scripts, and attention-building campaign hooks.
+- `Skills/lippytmai-ai-coding-swarm/SKILL.md` — activate for AI coding, GitHub implementation plans, automation swarms, software features, Zo Space pages, Zo Sites, API routes, Zapier workflows, and programming/blockchain/robotics build systems.
+
+### Skill selection rule
+
+If a task touches more than one area, combine skills instead of forcing one lane. Example:
+
+```text
+AI Business Funding eBook + Zapier lead capture + Space Aliens video campaign
+= ai-business-ebook-funnel + getbizfunds-lead-automation + space-aliens-content-engine
+```
+
+## Expansion quality standards
+
+Every serious expansion should be evaluated on seven dimensions:
+
+1. **Revenue viability** — What offer, affiliate path, lead path, or product could make money?
+2. **Audience clarity** — Who is this for, and what urgent problem does it solve?
+3. **Design quality** — Does it look distinctive, credible, and memorable rather than generic?
+4. **Operational flexibility** — Can it work as an article, eBook chapter, landing page, video, email, social post, and GitHub asset?
+5. **Automation readiness** — Can Zapier, Zo, GitHub, or future agents route, log, repurpose, or follow up from it?
+6. **Compliance safety** — Does it avoid income, funding, legal, tax, or investment guarantees and include relevant disclosures?
+7. **Long-term ecosystem fit** — Does it strengthen LippytmAI, GetBizFunds, affiliate marketing, education, AI coding, or the entertainment universe?
+
+### Design alternatives requirement
+
+For major builds, generate at least three options before choosing:
+
+- **Fast revenue version** — simplest viable path to leads or sales.
+- **Authority version** — deeper educational and trust-building version.
+- **Entertainment version** — science-fiction or multimedia wrapper that creates attention and shareability.
+
+Pick the recommended version based on current business priority, then preserve the other two as future variants.
+
 ## AI coding workflow
 
 ### Phase 1 — Idea capture

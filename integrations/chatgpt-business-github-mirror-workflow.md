@@ -56,6 +56,29 @@ Review for:
 - compliance and disclaimers
 - ability to publish as website, email, social, article, PDF, or eBook
 
+### Step 3A — Activate the right LippytmAI skills
+
+Before expanding the material, choose the matching custom skill set:
+
+- Strategy / monetization / ecosystem planning: `Skills/lippytmai-business-of-businesses/SKILL.md`
+- GetBizFunds lead capture / Zapier / CRM / GitHub lead issues: `Skills/getbizfunds-lead-automation/SKILL.md`
+- ChatGPT Business mirroring / alternative versions / GitHub documentation: `Skills/chatgpt-github-creative-mirror/SKILL.md`
+- eBooks / lead magnets / sales pages / launch campaigns: `Skills/ai-business-ebook-funnel/SKILL.md`
+- Space Aliens / Time Machines / educational entertainment: `Skills/space-aliens-content-engine/SKILL.md`
+- AI coding / automation / GitHub implementation / Zo pages: `Skills/lippytmai-ai-coding-swarm/SKILL.md`
+
+For complex work, combine skills. The best system is usually not one skill; it is a coordinated workflow.
+
+### Step 3B — Create three stronger alternatives
+
+For any high-value ChatGPT Business output, create:
+
+1. **Direct revenue version** — tighter, clearer, and more conversion-focused.
+2. **Authority education version** — deeper teaching, credibility, definitions, examples, and best practices.
+3. **Entertainment campaign version** — Space Aliens / Time Machines / robotics / programming story wrapper with a serious CTA.
+
+Then choose the best current version and archive the alternatives for future publishing.
+
 ### Step 4 — Commit approved version to GitHub
 
 For the `lippytm.ai` repo, recommended destinations are:
@@ -101,6 +124,9 @@ Publish useful outputs to one or more channels:
 - Avoid guarantees of funding, income, approval, investment returns, or legal/tax outcomes.
 - Use affiliate disclosures anywhere tools, programs, or partner offers may produce commissions.
 - Keep eBooks modular so chapters can become articles, emails, social posts, landing pages, and Canva slides.
+- Use the custom LippytmAI skills as reusable operating playbooks, and create new skills whenever a repeated workflow emerges.
+- Prefer modular documents that can be repurposed into pages, social posts, eBooks, scripts, Zapier templates, and GitHub issues.
+- Keep source material, final copy, prompt packs, and publication notes in GitHub or the Zo workspace so they do not remain trapped inside ChatGPT Business.
 
 ## Weekly workflow
 
