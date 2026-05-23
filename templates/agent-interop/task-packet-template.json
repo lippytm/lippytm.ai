@@ -1,0 +1,18 @@
+{
+  "task_id": "lippytmai-YYYYMMDD-short-name",
+  "source": "lippytmai",
+  "target_toolkit": "toolkit-name",
+  "mission": "one-sentence mission",
+  "task_type": "research|draft|code|review|automation|design|publish-proposal",
+  "business_context": "LippytmAI / Business of Businesses / GetBizFunds / AI Business Funding eBook / Affiliate Platform",
+  "inputs": {},
+  "constraints": [
+    "No guaranteed income claims",
+    "No funding approval guarantees",
+    "Draft before publishing",
+    "Log artifacts to GitHub or workspace"
+  ],
+  "approval_required": true,
+  "logging_target": "Records/Workflows or GitHub issue path",
+  "return_format": "markdown summary plus artifact paths"
+}

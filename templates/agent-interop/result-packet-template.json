@@ -1,0 +1,9 @@
+{
+  "task_id": "same-task-id",
+  "status": "success|needs_review|blocked|failed",
+  "summary": "short result summary",
+  "artifacts": [],
+  "risks": [],
+  "recommended_next_step": "next safe action",
+  "approval_needed": true
+}
