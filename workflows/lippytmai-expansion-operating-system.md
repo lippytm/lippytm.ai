@@ -29,7 +29,9 @@ A single idea should be converted into:
 | ChatGPT Business output mirroring, alternate versions, GitHub documentation | `Skills/chatgpt-github-creative-mirror/SKILL.md` |
 | eBooks, lead magnets, sales pages, email sequences, digital product funnels | `Skills/ai-business-ebook-funnel/SKILL.md` |
 | Space Aliens, Time Machines, robotics/programming/blockchain entertainment education | `Skills/space-aliens-content-engine/SKILL.md` |
-| AI coding, automation, software build plans, GitHub tasks, Zo pages, Zapier systems | `Skills/lippytmai-ai-coding-swarm/SKILL.md` |
+| AI coding, automation, software build plans, GitHub tasks, Zo pages, Zapier systems | `Skills/lippytmai-ai-coding-swarm/SKILL.md` || Skill selection, multi-skill workflows, agent stack planning, swarm composition | `Skills/lippytmai-skill-orchestrator/SKILL.md` |
+| Safer agents, AgentBots, swarm permissions, approval gates, audit trails, rollback plans | `Skills/agentic-swarm-governance/SKILL.md` |
+| Turning agents, skills, automations, templates, and workflows into revenue products | `Skills/ai-agent-productization/SKILL.md` |
 
 ## The 10-part expansion checklist
 
@@ -190,6 +192,20 @@ Recommendation rule:
 - Avoid overloading one page with every idea.
 - Separate serious business explanation from entertainment story sections.
 - Use checklists, templates, and prompts as assets that can become products.
+
+## Smarter and safer AgentBots / swarms
+
+When building bigger AI Super Agentic Synthetic Intelligence Engine AgentBots and swarms, use this pattern:
+
+1. Start with one business mission and one measurable outcome.
+2. Activate `lippytmai-skill-orchestrator` to choose the skill stack.
+3. Activate `agentic-swarm-governance` to define permissions, approval gates, audit logs, and rollback.
+4. Activate the domain skill, such as `getbizfunds-lead-automation`, `ai-business-ebook-funnel`, or `space-aliens-content-engine`.
+5. Activate `ai-agent-productization` if the system can become a product, service, eBook, lead magnet, free tool, or affiliate funnel.
+6. Preserve the plan in GitHub and a workspace workflow file.
+7. Publish only the smallest safe useful version first, then expand.
+
+Default safety rule: make agents powerful through clear roles, better memory, better tools, better workflows, and better review checkpoints—not through uncontrolled autonomy.
 
 ## Next expansion priorities
 
