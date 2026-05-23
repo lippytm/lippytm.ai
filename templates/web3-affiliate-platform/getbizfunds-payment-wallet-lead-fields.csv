@@ -1,0 +1,15 @@
+field_name,field_type,required,description,safety_notes
+lead_id,text,yes,Unique lead identifier,Do not use email as primary ID
+source_page,text,yes,Landing page or site where lead came from,Track separately from UTM fields
+site_id,text,yes,Web3 affiliate site or GetBizFunds site identifier,Required for multi-site attribution
+primary_interest,select,yes,Funding ebook web3 website affiliate program payment wallet consulting automation,Keep options simple
+business_name,text,no,Business or project name,Do not require too much data at first
+business_stage,select,no,idea startup operating scaling,Use for routing only
+funding_interest,select,no,yes no unsure,No approval guarantees
+payment_interest,select,no,ebook consulting subscription invoice crypto,Do not collect card data directly
+wallet_public_address,text,no,Public wallet address only,Never collect private key seed phrase or recovery phrase
+wallet_network,select,no,ethereum polygon base solana bitcoin other unsure,Confirm network before transactions
+affiliate_interest,select,no,yes no unsure,Requires approval before partner status
+campaign_source,text,no,UTM or campaign name,Useful for attribution
+consent_checkbox,boolean,yes,Consent to be contacted,Required before follow-up
+next_action,text,no,Recommended follow-up step,Human review before sensitive actions

@@ -1,0 +1,3 @@
+offer_id,offer_name,offer_type,audience,primary_problem,cta_url,affiliate_id,commission_model,payout_rule,disclosure_required,approval_status,source_repo,last_reviewed_at,notes
+getbizfunds-lead-001,GetBizFunds Business Funding Lead,funding_lead,business owners,need capital for growth,https://lippytmai.getbizfunds.com,,lead referral/manual review,manual approval,true,draft,lippytmai.getbizfunds.com-,2026-05-23,first funding CTA
+ai-funding-ebook-001,AI Business Funding Launch Kit,eBook,entrepreneurs and tech builders,need funding and AI automation plan,https://lippytmai.zo.space/ebook/ai-business-funding-launch-kit,,direct sale/manual affiliate later,manual review,true,draft,lippytm.ai,2026-05-23,first paid digital product candidate
