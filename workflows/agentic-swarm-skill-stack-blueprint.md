@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Define a repeatable blueprint for building bigger, better, smarter, and safer LippytmAI Super Agentic Synthetic Intelligence Engine AgentBots and swarms.
+Define a repeatable blueprint for building bigger, better, smarter, safer, self-improving, self-developing, and self-healing LippytmAI AI Agentic Super Synthetic Intelligence Engines AgentsBots Swarms.
 
 ## Core idea
 
@@ -29,8 +29,18 @@ Purpose: choose which skills to activate and define the workflow.
 ### Governance and safety
 
 - `Skills/agentic-swarm-governance/SKILL.md`
+- `Skills/agentic-red-team-safety-review/SKILL.md`
 
 Purpose: define approvals, audit trails, rollback, compliance, and boundaries.
+
+### Autonomous upgrade and self-healing
+
+- `Skills/autonomous-self-improvement-engine/SKILL.md`
+- `Skills/self-healing-agent-operations/SKILL.md`
+- `Skills/self-improvement/SKILL.md`
+- `Skills/swarm-observability-evaluation/SKILL.md`
+
+Purpose: observe systems, detect gaps, repair reversible issues, improve skills and workflows, log upgrades, and propose approval-required changes.
 
 ### Business strategy
 

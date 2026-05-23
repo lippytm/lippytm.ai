@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Continue expanding and improving the Skills of LippytmAI AI Super Agentic Synthetic Intelligence Engine AgentBots and Swarms with greater detail, depth, innovation, design quality, viability, diversity, flexibility, safety, and best practices.
+Continue expanding and improving the Skills of LippytmAI AI Agentic Super Synthetic Intelligence Engines AgentsBots Swarms with greater detail, depth, innovation, design quality, viability, diversity, flexibility, safety, and best practices.
 
 ## Core operating principle
 
@@ -57,9 +57,12 @@ Any workflow involving leads, funding, affiliate offers, money, external messagi
 
 ### 3. Observability and improvement layer
 
-Skill:
+Skills:
 
 - `Skills/swarm-observability-evaluation/SKILL.md`
+- `Skills/autonomous-self-improvement-engine/SKILL.md`
+- `Skills/self-healing-agent-operations/SKILL.md`
+- `Skills/self-improvement/SKILL.md`
 
 Purpose:
 
@@ -67,11 +70,13 @@ Purpose:
 - score quality
 - log actions
 - identify failures
+- run safe autonomous upgrade and update loops
+- diagnose and repair broken or drifting systems
 - improve skills and workflows over time
 
 Best practice:
 
-Every swarm should have a scorecard, even if simple. If we cannot measure the system, we cannot improve it reliably.
+Every swarm should have a scorecard, even if simple. If we cannot measure the system, we cannot improve it reliably. Autonomous self-improvement should stay reversible, auditable, and approval-gated for sensitive actions.
 
 ### 4. Memory and knowledge layer
 

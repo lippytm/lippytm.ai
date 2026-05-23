@@ -2,7 +2,7 @@
 
 ## Mission
 
-Maximize the AgentBots and AI Super Agentic Synthetic Intelligence Engine venue by turning skills, workflows, GitHub repositories, ChatGPT Business ideas, Zapier automations, Canva assets, Zo pages, eBooks, affiliate funnels, and GetBizFunds lead systems into a coordinated Business of Businesses growth engine.
+Maximize the AI Agentic Super Synthetic Intelligence Engines AgentsBots Swarms venue by turning skills, workflows, GitHub repositories, ChatGPT Business ideas, Zapier automations, Canva assets, Zo pages, eBooks, affiliate funnels, and GetBizFunds lead systems into a coordinated Business of Businesses growth engine.
 
 ## North Star
 
@@ -17,6 +17,8 @@ The system should become:
 - more creative through ChatGPT Business, Canva, and storytelling
 - more durable through GitHub documentation
 - more actionable through Zo Computer execution
+- more autonomous through safe upgrade and update loops
+- more resilient through self-healing diagnostics, repairs, and rollback plans
 
 ## Maximum venue design
 
@@ -28,6 +30,8 @@ Core stack:
 
 - `Skills/lippytmai-skill-orchestrator/SKILL.md`
 - `Skills/agentic-swarm-governance/SKILL.md`
+- `Skills/autonomous-self-improvement-engine/SKILL.md`
+- `Skills/self-healing-agent-operations/SKILL.md`
 - `Skills/lippytmai-business-of-businesses/SKILL.md`
 - `Skills/chatgpt-github-creative-mirror/SKILL.md`
 - `Skills/ai-agent-productization/SKILL.md`
