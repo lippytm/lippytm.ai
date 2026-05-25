@@ -1,0 +1,61 @@
+openapi: 3.1.0
+info:
+  title: LippytmAI Zo Computer Bridge
+  version: 0.1.0
+  description: Custom GPT action template for sending approved task packets to a secured Zo endpoint.
+servers:
+  - url: https://lippytmai.zo.space
+paths:
+  /api/chatgpt-bridge:
+    post:
+      operationId: sendTaskPacketToZo
+      summary: Send an approved ChatGPT Business task packet to Zo Computer
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - task_id
+                - task_type
+                - summary
+                - approval_status
+              properties:
+                task_id:
+                  type: string
+                task_type:
+                  type: string
+                  enum: [strategy, campaign, ebook, code_spec, zapier, canva, skill, agent_swarm, web3_affiliate, getbizfunds, payment_wallet]
+                summary:
+                  type: string
+                requested_action:
+                  type: string
+                approval_status:
+                  type: string
+                  enum: [draft_only, approved_for_internal_processing]
+                source_notes:
+                  type: string
+      responses:
+        '200':
+          description: Packet accepted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  received:
+                    type: boolean
+                  task_id:
+                    type: string
+                  next_step:
+                    type: string
+        '401':
+          description: Unauthorized
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
