@@ -1,0 +1,67 @@
+name: AI Swarms — Daily Business Intelligence
+
+on:
+  # Run every weekday at 7 AM UTC (2 AM EST)
+  schedule:
+    - cron: '0 7 * * 1-5'
+  # Allow manual trigger with swarm selection
+  workflow_dispatch:
+    inputs:
+      swarms:
+        description: 'Comma-separated swarms to run (leave blank for all)'
+        required: false
+        default: ''
+      save_report:
+        description: 'Commit report to repo?'
+        required: false
+        default: 'true'
+
+permissions:
+  contents: write
+
+jobs:
+  run-swarms:
+    name: Run AI Swarms
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: pip install -r requirements_swarms.txt
+
+      - name: Prepare report directory
+        run: mkdir -p reports
+
+      - name: Run AI Swarms
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          REPORT_FILE="reports/$(date +%Y-%m-%d).json"
+          SWARMS_ARG=""
+
+          if [ -n "${{ github.event.inputs.swarms }}" ]; then
+            # Convert comma-separated to space-separated for CLI
+            SWARMS_ARG="--swarms $(echo '${{ github.event.inputs.swarms }}' | tr ',' ' ')"
+          fi
+
+          python -m life_business_model full \
+            --output "$REPORT_FILE" \
+            $SWARMS_ARG
+
+      - name: Commit daily report
+        if: github.event.inputs.save_report != 'false'
+        run: |
+          git config user.name  "lippytm-ai-swarms[bot]"
+          git config user.email "ai-swarms@lippytm.ai"
+          git add reports/
+          git diff --staged --quiet || git commit -m "chore: daily AI swarms report $(date +%Y-%m-%d)"
+          git push
