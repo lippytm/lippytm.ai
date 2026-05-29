@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>What Is Your Data Worth? | lippytm.ai</title>
+  <meta name="description" content="Estimate the lifetime commercial value Big Tech and AI companies may generate from your data, inspired by the Web3 Foundation Hidden Price of Free report." />
+  <style>
+    :root {
+      --bg: #070812;
+      --panel: rgba(255,255,255,0.08);
+      --panel-strong: rgba(255,255,255,0.13);
+      --text: #f7f7fb;
+      --muted: #b8bdd7;
+      --cyan: #58e6ff;
+      --violet: #a576ff;
+      --gold: #ffd36e;
+      --green: #80ffbf;
+      --danger: #ff7b9c;
+      --line: rgba(255,255,255,0.16);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 10% 10%, rgba(88,230,255,0.22), transparent 32rem),
+        radial-gradient(circle at 90% 0%, rgba(165,118,255,0.24), transparent 30rem),
+        radial-gradient(circle at 50% 90%, rgba(255,211,110,0.11), transparent 30rem),
+        var(--bg);
+      min-height: 100vh;
+    }
+    a { color: var(--cyan); }
+    .wrap { width: min(1120px, calc(100% - 32px)); margin: 0 auto; padding: 52px 0; }
+    .eyebrow { color: var(--green); text-transform: uppercase; letter-spacing: 0.16em; font-size: 0.78rem; font-weight: 800; }
+    .hero { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 28px; align-items: center; }
+    h1 { font-size: clamp(2.8rem, 7vw, 6.4rem); line-height: 0.92; margin: 14px 0 18px; letter-spacing: -0.07em; }
+    h2 { font-size: clamp(1.6rem, 3vw, 2.4rem); margin: 0 0 12px; letter-spacing: -0.03em; }
+    p { color: var(--muted); line-height: 1.65; font-size: 1.05rem; }
+    .gradient-text { background: linear-gradient(90deg, var(--cyan), var(--violet), var(--gold)); -webkit-background-clip: text; color: transparent; }
+    .card { border: 1px solid var(--line); border-radius: 28px; background: linear-gradient(180deg, var(--panel-strong), var(--panel)); box-shadow: 0 24px 80px rgba(0,0,0,0.38); backdrop-filter: blur(16px); }
+    .calculator { padding: 28px; }
+    label { display: block; color: var(--text); font-weight: 700; margin: 18px 0 8px; }
+    input, select {
+      width: 100%; padding: 15px 16px; border-radius: 16px; border: 1px solid var(--line);
+      background: rgba(0,0,0,0.25); color: var(--text); font-size: 1rem; outline: none;
+    }
+    input:focus, select:focus { border-color: var(--cyan); box-shadow: 0 0 0 4px rgba(88,230,255,0.12); }
+    .checks { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
+    .check { display: flex; align-items: center; gap: 10px; border: 1px solid var(--line); border-radius: 14px; padding: 12px; color: var(--muted); background: rgba(0,0,0,0.16); cursor: pointer; }
+    .check input { width: auto; accent-color: var(--cyan); }
+    .result { margin-top: 24px; padding: 24px; border-radius: 22px; background: rgba(0,0,0,0.34); border: 1px solid rgba(88,230,255,0.28); }
+    .number { font-size: clamp(2.2rem, 5vw, 4.8rem); line-height: 1; font-weight: 900; letter-spacing: -0.06em; color: var(--gold); margin: 8px 0; }
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 28px; }
+    .stat { padding: 20px; }
+    .stat b { display: block; font-size: 1.5rem; color: var(--text); margin-bottom: 6px; }
+    .cta { margin-top: 34px; padding: 28px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 18px; align-items: center; }
+    .button { display: inline-flex; align-items: center; justify-content: center; padding: 14px 18px; border-radius: 999px; background: linear-gradient(90deg, var(--cyan), var(--violet)); color: #050611; font-weight: 900; text-decoration: none; }
+    .fineprint { font-size: 0.88rem; color: #8d93b5; }
+    .share { font-size: 0.92rem; color: var(--green); margin-top: 10px; font-weight: 800; }
+    @media (max-width: 860px) { .hero, .grid { grid-template-columns: 1fr; } .checks { grid-template-columns: 1fr; } h1 { letter-spacing: -0.04em; } }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="hero">
+      <div>
+        <div class="eyebrow">lippytm.ai · Web3 data sovereignty</div>
+        <h1>What is your <span class="gradient-text">data</span> worth?</h1>
+        <p>
+          The Web3 Foundation’s 2026 report, <em>The Hidden Price of Free</em>, estimates that Big Tech and AI companies may generate up to
+          <strong>$831,497</strong> in lifetime commercial value from each U.S. internet user’s data. This calculator turns that insight into a personal estimate.
+        </p>
+        <p>
+          It is not a legal claim or a payout promise. It is a conversation starter for the next internet: one where people can see, control, and potentially participate in the value their data creates.
+        </p>
+      </div>
+
+      <section class="card calculator" aria-label="Data value calculator">
+        <h2>Your estimate</h2>
+        <label for="age">Your age</label>
+        <input id="age" type="number" min="13" max="100" value="34" />
+
+        <label for="region">Region</label>
+        <select id="region">
+          <option value="us">United States</option>
+          <option value="uk_eu">United Kingdom / Europe</option>
+          <option value="global">Global average</option>
+          <option value="elsewhere">Elsewhere</option>
+        </select>
+
+        <label>Platforms / data intensity</label>
+        <div class="checks">
+          <label class="check"><input type="checkbox" class="platform" checked data-weight="0.16" /> Search + browsing</label>
+          <label class="check"><input type="checkbox" class="platform" checked data-weight="0.18" /> Social media</label>
+          <label class="check"><input type="checkbox" class="platform" checked data-weight="0.14" /> Shopping</label>
+          <label class="check"><input type="checkbox" class="platform" checked data-weight="0.16" /> AI prompts</label>
+          <label class="check"><input type="checkbox" class="platform" checked data-weight="0.13" /> Email + docs</label>
+          <label class="check"><input type="checkbox" class="platform" checked data-weight="0.13" /> Maps + location</label>
+          <label class="check"><input type="checkbox" class="platform" checked data-weight="0.10" /> Streaming media</label>
+        </div>
+
+        <div class="result" aria-live="polite">
+          <div class="fineprint">Estimated remaining lifetime commercial value</div>
+          <div class="number" id="lifetime">$0</div>
+          <div id="annual" class="fineprint">Annual estimate: $0</div>
+          <div id="share" class="share"></div>
+        </div>
+      </section>
+    </section>
+
+    <section class="grid" aria-label="Report benchmarks">
+      <article class="card stat"><b>$6,565/year</b><span class="fineprint">Central annual estimate for a U.S. internet user in the Web3 Foundation report.</span></article>
+      <article class="card stat"><b>$831,497</b><span class="fineprint">Inflation-linked lifetime U.S. estimate over a 60-year digital life.</span></article>
+      <article class="card stat"><b>$268T</b><span class="fineprint">Potential U.S. population-level value over 60 years, per the report.</span></article>
+    </section>
+
+    <section class="card cta">
+      <div>
+        <h2>Turn data awareness into business action.</h2>
+        <p>Use this as the front door for a Web3 data ownership funnel: wallet identity, consent receipts, data vaults, AI agent permissions, creator-owned monetization, startup funding, and cloud-computer automation.</p>
+      </div>
+      <div>
+        <a class="button" href="https://lippytmai.getbizfunds.com">Explore business startup funding</a>
+        <p class="fineprint" style="margin:10px 0 0">Also position lippytmai.zo.computer as the “computer in the cloud” for AI-powered business operations.</p>
+      </div>
+    </section>
+
+    <p class="fineprint">
+      Source: Web3 Foundation, “The Hidden Price of Free: What Your Data Is Really Worth” (May 2026). This calculator uses public report benchmarks and simple proportional assumptions for education/marketing, not financial advice, appraisal, or legal entitlement.
+    </p>
+  </main>
+
+  <script>
+    const annualBenchmarks = {
+      us: 6565,
+      uk_eu: 1605,
+      global: 694,
+      elsewhere: 265
+    };
+    const lifetimeYears = 60;
+    const currency = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 });
+    const age = document.getElementById('age');
+    const region = document.getElementById('region');
+    const checks = [...document.querySelectorAll('.platform')];
+    const lifetime = document.getElementById('lifetime');
+    const annual = document.getElementById('annual');
+    const share = document.getElementById('share');
+
+    function calculate() {
+      const userAge = Math.max(13, Math.min(100, Number(age.value || 34)));
+      const remainingYears = Math.max(0, lifetimeYears - Math.max(0, userAge - 13));
+      const activeWeight = checks.reduce((sum, box) => sum + (box.checked ? Number(box.dataset.weight) : 0), 0);
+      const intensity = Math.max(0.25, Math.min(1.15, activeWeight));
+      const annualValue = annualBenchmarks[region.value] * intensity;
+      const remainingLifetimeValue = annualValue * remainingYears;
+      lifetime.textContent = currency.format(remainingLifetimeValue);
+      annual.textContent = `Annual estimate: ${currency.format(annualValue)} · remaining digital years modeled: ${remainingYears}`;
+      share.textContent = `Share hook: “My data could be worth ${currency.format(remainingLifetimeValue)} to Big Tech and AI.”`;
+    }
+    [age, region, ...checks].forEach(el => el.addEventListener('input', calculate));
+    calculate();
+  </script>
+</body>
+</html>
