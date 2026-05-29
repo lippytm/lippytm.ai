@@ -1,0 +1,25 @@
+name: Deploy Cloudflare Worker
+
+on:
+  push:
+    branches: [main, claude/life-business-model-ai-swarms-e6fRB]
+    paths: [cloudflare_worker/**]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    name: Deploy AI Swarms Worker
+    steps:
+      - uses: actions/checkout@v4
+      - name: Deploy Worker
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: 2298fd8b261156a9e7aab0d4c9c54258
+          workingDirectory: cloudflare_worker
+      - name: Bootstrap D1 Schema
+        run: |
+          curl -X POST https://lippytm-ai-swarms.workers.dev/bootstrap \
+            -H "X-API-Key: ${{ secrets.ADMIN_API_KEY }}" \
+            -H "Content-Type: application/json"

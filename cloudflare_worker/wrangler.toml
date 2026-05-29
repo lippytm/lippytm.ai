@@ -1,0 +1,23 @@
+name = "lippytm-ai-swarms"
+main = "src/index.js"
+compatibility_date = "2024-09-23"
+
+[vars]
+PLATFORM = "lippytm.ai Business of Businesses"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "lippytm-swarms-memory"
+database_id = "4867c86f-2897-4082-9ad5-a10d3b1048b1"
+
+[[kv_namespaces]]
+binding = "LIPPYTM_SWARMS_CONFIG"
+id = "3e36cf3191a0429fb6b520b29ba0c775"
+
+# Secrets (set via: wrangler secret put ANTHROPIC_API_KEY)
+# ANTHROPIC_API_KEY
+# ADMIN_API_KEY
+# HUBSPOT_ACCESS_TOKEN
+# ASANA_ACCESS_TOKEN
+# NOTION_TOKEN
+# SLACK_BOT_TOKEN

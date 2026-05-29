@@ -1,0 +1,13 @@
+{
+  "name": "lippytm-ai-swarms-worker",
+  "version": "2.0.0",
+  "description": "Cloudflare Worker — live REST API for lippytm Business of Businesses AI swarms",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "bootstrap": "curl -X POST https://lippytm-ai-swarms.workers.dev/bootstrap -H 'X-API-Key: $ADMIN_API_KEY'"
+  },
+  "devDependencies": {
+    "wrangler": "^3.0.0"
+  }
+}
