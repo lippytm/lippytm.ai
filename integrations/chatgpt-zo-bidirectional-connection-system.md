@@ -151,6 +151,17 @@ ChatGPT Business output requested:
 - Raw ChatGPT exports stay separate from processed workspace assets.
 - GitHub commits should be focused and traceable.
 
+## Security hardening update — 2026-06-21
+
+The live `https://lippytmai.zo.space/api/business-chatgpt` API route now checks bearer authorization before reporting bridge configuration status. Unauthenticated requests receive a generic `401 Unauthorized` response instead of learning whether `BUSINESS_CHATGPT_ZO_TOKEN` or `ZO_API_KEY` is configured.
+
+Operational requirements remain:
+
+- Save `BUSINESS_CHATGPT_ZO_TOKEN` as a private Zo secret for the Custom GPT/Business ChatGPT caller.
+- Save `ZO_API_KEY` as a private Zo secret so the bridge can call Zo after authorization succeeds.
+- Keep the caller token out of ChatGPT-visible documents, GitHub, public pages, and screenshots.
+- Treat the bridge as a task intake endpoint, not an uncontrolled automation permission grant; destructive, financial, public-publishing, live-form, Zapier, and external-message actions still require approval.
+
 ## Immediate use
 
 Current full export package:
