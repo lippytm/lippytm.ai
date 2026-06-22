@@ -7,6 +7,7 @@ from datetime import datetime
 
 from .orchestrator import MasterOrchestrator
 from .models.business_model import LifeBusinessModel
+from .system_of_systems import SystemOfSystems
 from .config import CONFIG
 
 
@@ -73,10 +74,24 @@ def main():
     # list: list all swarms
     sub.add_parser("list", help="List all available swarms")
 
+    # system: query/operate the unified System of Systems
+    p_system = sub.add_parser(
+        "system",
+        help="Query/operate the System of Systems (Life OS + Business + Swarms + Creative + Platform Mesh)",
+    )
+    p_system.add_argument("action", choices=["status", "run"], default="status", nargs="?")
+    p_system.add_argument("--swarms", action="store_true", help="Run all 8 AI swarms as part of the system run")
+    p_system.add_argument("--creative", help="Run the creative engine with this topic")
+    p_system.add_argument("--output", "-o", help="Save the system report as JSON")
+    p_system.add_argument("--no-notify", action="store_true", help="Skip Slack notification")
+
     args = parser.parse_args()
 
     api_key = os.getenv("ANTHROPIC_API_KEY")
-    if args.command not in ("model", "list") and not api_key:
+    requires_key = args.command not in ("model", "list") and not (
+        args.command == "system" and args.action == "status"
+    )
+    if requires_key and not api_key:
         print("ERROR: ANTHROPIC_API_KEY environment variable not set.", file=sys.stderr)
         sys.exit(1)
 
@@ -109,6 +124,21 @@ def main():
         orch.print_report(report)
         if args.output:
             orch.save_report(report, args.output)
+
+    elif args.command == "system":
+        sos = SystemOfSystems(api_key=api_key)
+        if args.action == "run":
+            report = sos.run(
+                run_swarms=args.swarms,
+                run_creative=bool(args.creative),
+                creative_topic=args.creative,
+                notify=not args.no_notify,
+            )
+            if args.output:
+                sos.save_report(report, args.output)
+            sos.print_full_status()
+        else:
+            sos.print_full_status()
 
 
 if __name__ == "__main__":
