@@ -1,0 +1,66 @@
+name: Weekly Dev Education Lesson
+
+on:
+  schedule:
+    - cron: '0 9 * * 4'  # Thursday 9AM UTC
+  workflow_dispatch:
+    inputs:
+      topic:
+        description: 'Lesson topic (optional, uses curriculum rotation if blank)'
+        required: false
+      track:
+        description: 'Curriculum track: blockchain or programming (optional)'
+        required: false
+      render_real_media:
+        description: 'Render real .mp3/.mp4 files (requires OPENAI_API_KEY)'
+        required: false
+        default: 'true'
+
+jobs:
+  generate-lesson:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install ffmpeg (required by moviepy)
+        run: sudo apt-get update && sudo apt-get install -y ffmpeg fonts-dejavu-core
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Generate dev education lesson
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          TOPIC_INPUT: ${{ github.event.inputs.topic }}
+          TRACK_INPUT: ${{ github.event.inputs.track }}
+          RENDER_INPUT: ${{ github.event.inputs.render_real_media }}
+        run: |
+          ARGS=""
+          if [ -n "$TOPIC_INPUT" ]; then ARGS="$ARGS --topic \"$TOPIC_INPUT\""; fi
+          if [ -n "$TRACK_INPUT" ]; then ARGS="$ARGS --track $TRACK_INPUT"; fi
+          if [ "$RENDER_INPUT" != "false" ]; then ARGS="$ARGS --render-real-media"; fi
+          eval python -m life_business_model.content.dev_education $ARGS
+
+      - name: Commit lesson bundle
+        run: |
+          git config user.email "dev-education@lippytm.ai"
+          git config user.name "Dev Education Bot"
+          git add dist/dev_education/ 2>/dev/null || true
+          git commit -m "Weekly dev education lesson: $(date +%Y-%m-%d)" || echo "Nothing to commit"
+          git push
+
+      - name: Notify Slack
+        if: always()
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        run: |
+          if [ -n "$SLACK_WEBHOOK_URL" ]; then
+            curl -X POST -H 'Content-type: application/json' \
+              --data '{"text":"🎓 Weekly dev education lesson generated: ebook + real audiobook audio + real teaching video + blog post. Check dist/dev_education/ on the swarms branch."}' \
+              "$SLACK_WEBHOOK_URL"
+          fi

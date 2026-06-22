@@ -3,8 +3,8 @@
 Takes ONE source idea and multiplies it into every format:
   Source Topic
     |-- Ebook (lead magnet or paid product)
-    |     `-- Audiobook (narration script + TTS manifest)
-    |-- Video series (long-form, short, explainer)
+    |     `-- Audiobook (narration script + real .mp3, when render_real_media=True)
+    |-- Video series (long-form, short, explainer; real .mp4 when render_real_media=True)
     |-- Blog post (SEO-optimized)
     `-- Social posts (LinkedIn, Twitter, Instagram)
 
@@ -88,8 +88,17 @@ Each optimized for its platform's format and audience expectations."""
         except json.JSONDecodeError:
             return {"raw": resp.content[0].text}
 
-    def full_bundle(self, topic: str, include_ebook: bool = True,
-                     include_audiobook: bool = True, include_videos: bool = True) -> ContentBundle:
+    def full_bundle(
+        self,
+        topic: str,
+        include_ebook: bool = True,
+        include_audiobook: bool = True,
+        include_videos: bool = True,
+        render_real_media: bool = False,
+    ) -> ContentBundle:
+        """Generate the full content bundle. If render_real_media=True, also calls
+        the TTS and video-render engines to produce actual .mp3/.mp4 files
+        (requires OPENAI_API_KEY, and moviepy+Pillow for video)."""
         bundle = ContentBundle(topic=topic, generated_at=datetime.now(timezone.utc).isoformat())
 
         bundle.title_options = self.generate_title_options(topic)
@@ -108,6 +117,12 @@ Each optimized for its platform's format and audience expectations."""
             if include_audiobook:
                 audio_manifest = self.audiobook_gen.generate_from_ebook(ebook_dict)
                 bundle.audiobook = audio_manifest.to_dict()
+                if render_real_media:
+                    try:
+                        audio_files = self.audiobook_gen.synthesize_real_audio(audio_manifest)
+                        bundle.audiobook["rendered_audio_files"] = [str(p) for p in audio_files]
+                    except (ImportError, EnvironmentError) as e:
+                        bundle.audiobook["render_error"] = str(e)
 
         if include_videos:
             series = self.video_gen.generate_series(
@@ -115,6 +130,13 @@ Each optimized for its platform's format and audience expectations."""
                 topic_base=topic,
             )
             bundle.videos = [v.to_dict() for v in series]
+            if render_real_media:
+                for video_dict, script_obj in zip(bundle.videos, series):
+                    try:
+                        rendered_path = self.video_gen.render_video_file(script_obj)
+                        video_dict["rendered_video_file"] = str(rendered_path)
+                    except (ImportError, EnvironmentError) as e:
+                        video_dict["render_error"] = str(e)
 
         bundle.blog_post = self.generate_blog_post(topic)
         bundle.social_posts = self.generate_social_posts(topic)
@@ -145,12 +167,13 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--topic", default=None)
     parser.add_argument("--output", default="dist/content_bundles")
+    parser.add_argument("--render-real-media", action="store_true")
     args = parser.parse_args()
 
     week = dt.date.today().isocalendar()[1]
     topic = args.topic or CONTENT_PIPELINE_TOPICS[week % len(CONTENT_PIPELINE_TOPICS)]
 
     studio = CreativeStudio()
-    bundle = studio.full_bundle(topic)
+    bundle = studio.full_bundle(topic, render_real_media=args.render_real_media)
     path = studio.write_bundle_to_disk(bundle, args.output)
     print(f"Content bundle written to: {path}")

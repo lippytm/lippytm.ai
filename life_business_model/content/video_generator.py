@@ -1,4 +1,5 @@
-"""Video Generator -- converts content into video scripts and storyboards.
+"""Video Generator -- converts content into video scripts/storyboards, and
+(when OPENAI_API_KEY + moviepy/Pillow are available) renders real mp4 files.
 
 Formats supported:
 - YouTube long-form (8-15 min): tutorial/deep-dive
@@ -7,7 +8,8 @@ Formats supported:
 - Webinar/presentation scripts (20-40 min): slide-by-slide narration
 
 Output: scene-by-scene breakdown with visual direction, voiceover script,
-on-screen text, and B-roll suggestions. Feeds into Canva for thumbnails/assets.
+on-screen text, and B-roll suggestions, plus an optional rendered mp4 via
+VideoRenderEngine (slides + TTS narration -- no third-party video API needed).
 """
 from __future__ import annotations
 
@@ -59,6 +61,7 @@ class VideoGenerator:
     }
 
     def __init__(self, api_key: str | None = None):
+        self.api_key = api_key
         self.client = anthropic.Anthropic(api_key=api_key or os.environ.get("ANTHROPIC_API_KEY"))
 
     def generate(self, topic: str, format: str = "short", source_content: str = "") -> VideoScript:
@@ -134,6 +137,18 @@ must sum to approximately the target duration."""
             self.generate(f"{topic_base} (60-second hook)", "short", source_content),
             self.generate(f"{topic_base} (explainer)", "explainer", source_content),
         ]
+
+    def render_video_file(self, script: VideoScript, output_dir: str = "dist/videos/rendered", voice: str = "onyx") -> Path:
+        """Actually render a real mp4 (slides + TTS narration). Requires OPENAI_API_KEY + moviepy + Pillow."""
+        from .video_render import VideoRenderEngine
+
+        engine = VideoRenderEngine(api_key=self.api_key, voice=voice)
+        slug = re.sub(r"[^a-z0-9]+", "-", script.title.lower()).strip("-")
+        output_path = Path(output_dir) / f"{slug}_{script.format}.mp4"
+
+        script_dict = script.to_dict()
+        script_dict["scenes"] = [asdict(s) for s in script.scenes]
+        return engine.render(script_dict, str(output_path))
 
     def write_to_disk(self, script: VideoScript, output_dir: str = "dist/videos") -> Path:
         out = Path(output_dir)

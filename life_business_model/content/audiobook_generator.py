@@ -1,13 +1,11 @@
-"""Audiobook Generator -- converts ebook chapters into TTS-ready narration scripts.
+"""Audiobook Generator -- converts ebook chapters into TTS-ready narration scripts,
+and (when OPENAI_API_KEY is set) synthesizes them into real mp3 files.
 
 Pipeline:
 1. Markdown chapter -> cleaned narration script (strip markdown, add pacing)
 2. Script -> pacing markup ([PAUSE], [EMPHASIS]) for natural delivery
 3. TTS manifest: chapter audio file naming, voice selection, synthesis instructions
-4. Integration points: OpenAI TTS (tts-1-hd) or ElevenLabs
-
-Note: actual audio synthesis requires an API call with a TTS provider + valid key.
-This module prepares production-ready scripts and manifests for that step.
+4. synthesize_real_audio(): calls OpenAI's TTS API to produce actual .mp3 files
 """
 from __future__ import annotations
 
@@ -55,11 +53,12 @@ class AudiobookManifest:
 
 
 class AudiobookGenerator:
-    """Converts ebook manuscripts into audiobook-ready narration scripts."""
+    """Converts ebook manuscripts into audiobook-ready narration scripts and real audio."""
 
     WORDS_PER_MINUTE = 150
 
     def __init__(self, api_key: str | None = None):
+        self.api_key = api_key
         self.client = anthropic.Anthropic(api_key=api_key or os.environ.get("ANTHROPIC_API_KEY"))
 
     def _clean_markdown(self, text: str) -> str:
@@ -127,7 +126,7 @@ Output the narration script only."""
         )
 
     def tts_synthesis_instructions(self, manifest: AudiobookManifest) -> list:
-        """Generate the exact API calls needed to synthesize audio (for execution with valid keys)."""
+        """Generate the exact API calls needed to synthesize audio (for inspection/debugging)."""
         instructions = []
         for ch in manifest.chapters:
             clean_script = ch.narration_script.replace("[PAUSE]", "... ").replace("[EMPHASIS]", "").replace("[/EMPHASIS]", "")
@@ -144,6 +143,13 @@ Output the narration script only."""
                 "needs_chunking": len(clean_script) > 4096,
             })
         return instructions
+
+    def synthesize_real_audio(self, manifest: AudiobookManifest, output_dir: str = "dist/audiobooks/audio") -> list:
+        """Actually call OpenAI's TTS API and produce real .mp3 files. Requires OPENAI_API_KEY."""
+        from .tts_engine import OpenAITTSEngine
+
+        engine = OpenAITTSEngine()
+        return engine.synthesize_audiobook(manifest, output_dir)
 
     def write_to_disk(self, manifest: AudiobookManifest, output_dir: str = "dist/audiobooks") -> Path:
         out = Path(output_dir)
