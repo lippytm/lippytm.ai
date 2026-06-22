@@ -1,0 +1,50 @@
+name: Weekly Content Factory
+
+on:
+  schedule:
+    - cron: '0 9 * * 1'  # Monday 9AM UTC
+  workflow_dispatch:
+    inputs:
+      topic:
+        description: 'Content topic (optional, uses rotation if blank)'
+        required: false
+
+jobs:
+  generate-content:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install anthropic openai
+
+      - name: Generate content bundle
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          TOPIC_INPUT: ${{ github.event.inputs.topic }}
+        run: |
+          python -m life_business_model.content.creative_studio --topic "$TOPIC_INPUT"
+
+      - name: Commit content bundle
+        run: |
+          git config user.email "content-factory@lippytm.ai"
+          git config user.name "Content Factory Bot"
+          git add dist/content_bundles/ dist/ebooks/ dist/audiobooks/ dist/videos/ 2>/dev/null || true
+          git commit -m "Weekly content bundle: $(date +%Y-%m-%d)" || echo "Nothing to commit"
+          git push
+
+      - name: Notify Slack
+        if: always()
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        run: |
+          if [ -n "$SLACK_WEBHOOK_URL" ]; then
+            curl -X POST -H 'Content-type: application/json' \
+              --data '{"text":"📚 Weekly content bundle generated: ebook + audiobook scripts + 3 video formats + blog + social posts. Check dist/content_bundles/ on the swarms branch."}' \
+              "$SLACK_WEBHOOK_URL"
+          fi
