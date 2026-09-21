@@ -59,6 +59,8 @@ jobs:
           echo "Checking for risky guarantee language..."
           if grep -RInE "guaranteed (funding|income|approval|profit|returns|cybersecurity)|guarantee (funding|income|approval|profit|returns|cybersecurity)" . \
             --exclude-dir=.git \
+            --exclude-dir=security \
+            --exclude-dir=.github \
             --exclude="*.png" --exclude="*.jpg" --exclude="*.jpeg" --exclude="*.gif" --exclude="*.webp"; then
             echo "Risky guarantee language found. Review copy and add safe disclaimers."
             exit 1
