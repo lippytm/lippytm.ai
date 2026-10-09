@@ -4,9 +4,9 @@
 
 ## Position and first paid offer
 
-Position the first offer as **AI-assisted lead response and appointment workflow setup** for one small-business customer at a time. The initial outcome is a reliably managed process: capture an inquiry, collect consent and key qualification details, prepare a timely follow-up, and route an appointment request to the customer's chosen calendar or human. Keep a human in approval/control of outbound messages until channel behavior is verified.
+Position the first offer as **AI-assisted lead response and appointment workflow setup** for one small-business customer at a time. The initial outcome is a reliably managed process: capture an inquiry, collect consent and key qualification details, prepare a timely follow-up, and route an appointment request to the customer's chosen calendar or human. Require human approval for every outbound message and appointment create/change/cancel action throughout the pilot, including after channel verification. A later change in autonomy needs a separately approved scope and safety validation.
 
-Choose one niche after discovery; do not market simultaneously to clinics, real estate, ecommerce, agencies, and all local businesses. Start with one capture channel, one follow-up channel, and one booking destination. Integration count is capped at three for the pilot.
+Choose one niche after discovery; do not market simultaneously to clinics, real estate, ecommerce, agencies, and all local businesses. Start with one capture channel, one follow-up channel, and one booking destination. Integration count is capped at three for the pilot; count storage, middleware, and model APIs when accessed automatically, as defined in the [First Customer Package](JARVIS_FIRST_CUSTOMER_PACKAGE.md).
 
 ### Product ladder
 
@@ -66,6 +66,14 @@ Approved source material → one useful free excerpt/checklist → opt-in audien
 - Do not provide regulated legal, financial, medical, or tax advice. Route those requests to a qualified professional.
 - Identify AI-assisted interactions where appropriate; offer a visible human handoff and a reliable non-AI fallback.
 - Confirm permissions to reproduce, narrate, translate, adapt, and distribute source content before making commercial editions.
+
+## Commercial evidence and approval record
+
+The existing [Monetization Strategies](../MONETIZATION.md) remains the wider product/affiliate strategy, including Twin.so referrals, education, consulting, and later platform offerings. Its illustrative API tier prices, commissions, subscriber targets, and marketplace projections are not approved pilot pricing or achieved results. Hostinger remains a planned funnel; a referral URL or connected account alone does not verify program status, operational integration, payout, or attribution.
+
+Before offering a delivery commitment, the Principal must approve the chosen niche/customer fit, exact deliverable and manual steps, final price/payment/refund terms, third-party cost cap, capacity/support hours, data/consent terms, acceptance measures, and permitted public claims. Record owner, decision, date, supporting evidence, and unresolved conditions in a private decision log. Product rights/checkout and each affiliate relationship/disclosure remain separate gates; do not make buying an affiliate product a condition of the pilot.
+
+Current repository evidence supports preparation, scoping, and synthetic rehearsal. Live workflow delivery is conditional on the named-provider and manual-process evidence in the [First Customer Package](JARVIS_FIRST_CUSTOMER_PACKAGE.md). Discovery/scoping may be discussed with accurate limitations; do not sell unverified automation as an available service.
 
 ## Launch gate
 
